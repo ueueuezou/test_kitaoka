@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}コメント投稿{% endblock %}
+{% block h1 %}コメント投稿{% endblock %}
+
+{% load static %}
+
+{% block content %}
+
+    <form method="post" class="p-4 m-4 bg-light border-success rounded form-group">
+        {% csrf_token %}
+        <label>Text: </label>
+        <textarea class="form-control" name="text" rows="3"></textarea>
+        <input type="hidden" name='com' value="{{ com.id }}">
+        <button type="submit" class="btn btn-success mt-4">投稿する</button>
+    </form>
+
+{% endblock %}

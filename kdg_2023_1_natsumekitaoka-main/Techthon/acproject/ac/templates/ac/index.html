@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% load static %}
+{% block content %}
+
+<div id="contents">
+
+<section id="new">
+<h2>お知らせ</h2>
+<dl>
+{% for item in object_list %}
+<dt>{{ item.created|date:'Y/m/d' }}</dt>
+<dd>{{ item.text }}</dd>
+{% endfor %}
+</dl>
+</section>
+
+<section>
+<h2>サイトのご利用前に必ずお読み下さい</h2>
+<h3>利用規約のご案内</h3>
+<p><span class="color1">■<strong>荒らし行為は一切禁止です。</strong></span><br>
+管理人が見つけ次第、該当ユーザーは退会処分とさせていただきます。</p>
+<p><span class="color1">■<strong>個人の特定に繋がる情報は載せないようご注意ください。</strong></span><br>
+ゲーム内での交流を楽しみましょう。</p>
+<h3>当サイトの詳しい使い方は</h3>
+<p><a href="{% url 'about' %}">こちらをご覧下さい。</a></p>
+</section>
+
+</div>
+
+{% endblock content %}

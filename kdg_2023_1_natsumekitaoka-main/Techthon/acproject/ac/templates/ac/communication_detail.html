@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}スレッド詳細{% endblock %}
+{% load static %}
+{% block content %}
+
+<div class="list">
+<img src="{{ object.image.url }}">
+<p>{{ object.created|date:'Y/m/d' }}</p>
+<p>(User: {{ object.user.username }})</p>
+<p>Category: {{ object.category }}</p>
+<h4>Title: {{ object.title }}</h4>
+<p>{{ object.text }}</p>
+<a href="{% url 'communication' %}" class="btn btn-primary"><button type="submit">一覧へ</button></a>
+<a href="{% url 'comment' object.pk %}" class="btn btn-primary"><button type="submit">コメント</button></a>
+<a href="{% url 'communication_update' object.pk %}" class="btn btn-primary"><button type="submit">編集</button></a>
+<a href="{% url 'communication_delete' object.pk %}" class="btn btn-primary"><button type="submit">削除</button></a>
+</div>
+
+{% for comment in object.comment_set.all %}
+<div class="list">
+<p>{{ comment.created|date:'Y/m/d' }}</p>
+<p>(User: {{ comment.user.username }})</p>
+<p>{{ comment.text }}</p>
+</div>
+{% endfor %}
+
+{% endblock content %}

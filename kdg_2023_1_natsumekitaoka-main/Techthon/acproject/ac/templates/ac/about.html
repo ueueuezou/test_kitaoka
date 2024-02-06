@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}About{% endblock %}
+{% load static %}
+{% block content %}
+
+<div id="contents">
+
+<section>
+<h2>About</h2>
+<p>このサイトは、あつまれ どうぶつの森のファンが安全に交流することができる場を提供することを目的としています。</p>
+</section>
+
+<section id="about">
+<h2>当サイトの使い方について</h2>
+<h3>Home</h3>
+<p>お知らせ欄では、ゲームに関する最新情報などの重要な情報を随時発信しております。<br>
+<a href="{% url 'home' %}" target="_blank">お知らせのご確認はこちら</a></p>
+
+<h3>About</h3>
+<p>当サイトの使い方についてご説明しております。<br>
+ご利用の前によく読んでご確認ください。</p>
+
+<h3>Communication</h3>
+<p>自分の島の日常を発信したり、他のユーザーにゲームに関する質問•相談をするなど、自由に使うことができる掲示板です。<br>
+ユーザー同士のコミュニケーションの場として、積極的にご活用ください。<br>
+<a href="{% url 'communication' %}" target="_blank">掲示板はこちら</a></p>
+
+<h3>Official</h3>
+<p>あつまれ どうぶつの森の公式サイトや公式SNS等のリンクを掲載しております。<br>
+是非とも公式情報も併せてご確認ください。<br>
+<a href="{% url 'official' %}" target="_blank">各種リンクはこちら</a></p>
+</section>
+
+</div>
+
+{% endblock content %}

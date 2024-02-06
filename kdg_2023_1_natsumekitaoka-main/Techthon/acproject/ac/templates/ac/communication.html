@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Communication{% endblock %}
+{% load static %}
+{% block content %}
+
+<div id="contents">
+
+<section>
+<h2>Communication</h2>
+<a href="{% url 'communication_create' %}"><button type="submit">新規作成</button></a>
+{% for item in object_list %}
+<div class="list">
+<img src="{{ item.image.url }}">
+<p>{{ item.created|date:'Y/m/d' }}</p>
+<p>(User: {{ item.user.username }})</p>
+<p>Category: {{ item.category }}</p>
+<h4>Title: {{ item.title }}</h4>
+<p>{{ item.text }}</p>
+<p><a href="{% url 'communication_detail' item.pk %}" class="btn btn-primary">このスレッドに移動</a></p>
+</div>
+{% endfor %}
+</section>
+
+</div>
+
+{% endblock content %}

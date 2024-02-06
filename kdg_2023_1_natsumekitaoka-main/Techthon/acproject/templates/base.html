@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>{% block title %}{% endblock title %} | あつまれ どうぶつの森ファン向け非公式コミュニティサイト</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="ここにサイト説明を入れます">
+<meta name="keywords" content="キーワード１,キーワード２,キーワード３,キーワード４,キーワード５">
+<link rel="stylesheet" type="text/css" href="{% static 'ac/css/style.css' %}">
+</head>
+
+<body>
+<div id="container">
+    <header>
+        <h1 id="logo"><a href="{% url 'home' %}"><img src="{% static 'ac/images/IMG_0389.jpg' %}" alt="SAMPLE SITE"></a></h1>
+        <div class="navbar-nav d-flex flex-row">
+            {% if request.user.is_authenticated %}
+                <a class="nav-link mx-3" href="{% url 'accounts:logout' %}">ログアウト</a>
+            {% else %}
+                <a class="nav-link mx-3" href="{% url 'accounts:login' %}">ログイン</a>
+                <a class="nav-link mx-3" href="{% url 'accounts:signup' %}">会員登録</a>
+            {% endif %}
+        </div>
+        <aside id="mainimg"><img src="{% static 'ac/images/mainimg.jpg' %}" alt=""></aside>
+    </header>
+    <nav id="menubar">
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'communication' %}">Communication</a></li>
+            <li><a href="{% url 'official' %}">Official</a></li>
+        </ul>
+    </nav>
+
+{% block content %}{% endblock content %}
+
+<footer>
+    <small>Copyright&copy; <a href="{% url 'home' %}">COMMUNICATION SITE</a> All Rights Reserved.</small>
+    <span class="pr">《<a href="https://template-party.com/" target="_blank">Web Design:Template-Party</a>》</span>
+</footer>
+</div>
+</body>
+
+</html>
